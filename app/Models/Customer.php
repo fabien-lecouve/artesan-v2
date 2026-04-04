@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[Fillable([
     'company_id',
-    'mail',
+    'email',
     'firstname',
     'lastname',
     'address',

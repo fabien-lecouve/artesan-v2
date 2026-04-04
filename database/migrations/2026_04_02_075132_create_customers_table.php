@@ -18,10 +18,10 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->string('mail')->nullable();
-
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
+
+            $table->string('email')->nullable();
 
             $table->string('address')->nullable();
             $table->string('complementary_address')->nullable();
