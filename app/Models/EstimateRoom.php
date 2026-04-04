@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'complementary_label',
     'position',
     'warranty',
+    'supplies',
+    'labor',
     'subtotal',
 ])]
 class EstimateRoom extends Model
@@ -27,6 +29,8 @@ class EstimateRoom extends Model
     protected function casts(): array
     {
         return [
+            'supplies' => 'decimal:2',
+            'labor' => 'decimal:2',
             'subtotal' => 'decimal:2'
         ];
     }

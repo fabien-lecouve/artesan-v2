@@ -30,6 +30,9 @@ return new class extends Migration
 
             $table->string('warranty')->nullable();
 
+            $table->decimal('supplies', 10, 2)->default(0);
+            $table->decimal('labor', 10, 2)->default(0);
+
             $table->decimal('subtotal', 10, 2)->default(0);
 
             $table->timestamps();
