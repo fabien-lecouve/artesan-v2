@@ -2,31 +2,17 @@
 
 namespace App\Models;
 
+use Database\Factories\InvoiceFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Casts;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-#[Fillable([
-    'company_id',
-    'customer_id',
-    'project_id',
-    'estimate_id',
-    'invoice_status_id',
-    'invoice_type_id',
-    'reference',
-    'total_ht',
-    'total_vat',
-    'total_ttc',
-    'issued_at',
-    'due_at',
-    'paid_at',
-    'payment_method',
-    'payment_reference',
-    'notes',
-])]
+#[Fillable(['company_id','customer_id','project_id','estimate_id','invoice_status_id','invoice_type_id','reference','total_ht','total_vat','total_ttc','issued_at','due_at','paid_at','payment_method','payment_reference','notes'])]
 class Invoice extends Model
 {
+    use HasFactory;
+    
     /**
      * Get the attributes that should be cast.
      *
@@ -73,5 +59,10 @@ class Invoice extends Model
     public function type(): BelongsTo
     {
         return $this->belongsTo(InvoiceType::class, 'invoice_type_id');
+    }
+
+    public function paymentMethod(): BelongsTo
+    {
+        return $this->belongsTo(PaymentMethod::class);
     }
 }

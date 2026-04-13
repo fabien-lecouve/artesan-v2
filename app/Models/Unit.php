@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable(['code','label'])]
-class EstimateStatus extends Model
+class Unit extends Model
 {
-    public function estimates(): HasMany
+    public function supplies(): HasMany
     {
-        return $this->hasMany(Estimate::class);
+        return $this->hasMany(Supply::class);
     }
 }

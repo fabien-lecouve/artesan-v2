@@ -22,9 +22,15 @@ return new class extends Migration
                 ->constrained()
                 ->restrictOnDelete();
 
+            $table->foreignId('unit_id')
+                ->constrained()
+                ->restrictOnDelete();
+
             $table->string('name');
 
             $table->decimal('unit_cost', 10, 2)->nullable();
+
+            $table->integer('warranty')->nullable();
 
             $table->string('description_singular')->nullable();
             $table->string('description_plural')->nullable();

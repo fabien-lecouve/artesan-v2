@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
+use Database\Factories\TemplateRoomFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-#[Fillable([
-    'company_id',
-    'template_id',
-    'room_id',
-    'position',
-    'complementary_label',
-])]
+#[Fillable(['company_id', 'template_id', 'room_id', 'position', 'complementary_label'])]
 class TemplateRoom extends Model
 {
+    use HasFactory;
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);

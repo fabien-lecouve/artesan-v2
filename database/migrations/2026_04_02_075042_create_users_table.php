@@ -27,7 +27,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->unique(['company_id', 'mail']);
+            $table->unique(['company_id', 'email']);
 
             $table->index('company_id');
         });

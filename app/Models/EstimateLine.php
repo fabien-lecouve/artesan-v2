@@ -2,27 +2,17 @@
 
 namespace App\Models;
 
+use Database\Factories\EstimateLineFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Casts;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-#[Fillable([
-    'company_id',
-    'estimate_room_id',
-    'supply_id',
-    'quantity',
-    'position',
-    'label',
-    'unit_cost',
-    'unit_price',
-    'labor_cost',
-    'labor_price',
-    'vat_rate_id',
-    'description_override',
-])]
+#[Fillable(['company_id', 'estimate_room_id', 'supply_id', 'quantity', 'position', 'label', 'unit_cost', 'unit_price', 'labor_cost', 'labor_price', 'vat_rate_id', 'description_override'])]
 class EstimateLine extends Model
 {
+    use HasFactory;
+    
     /**
      * Get the attributes that should be cast.
      *
@@ -32,9 +22,9 @@ class EstimateLine extends Model
     {
         return [
             'unit_cost' => 'decimal:2',
-    'unit_price' => 'decimal:2',
-    'labor_cost' => 'decimal:2',
-    'labor_price' => 'decimal:2',
+            'unit_price' => 'decimal:2',
+            'labor_cost' => 'decimal:2',
+            'labor_price' => 'decimal:2',
         ];
     }
 

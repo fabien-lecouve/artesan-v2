@@ -2,28 +2,19 @@
 
 namespace App\Models;
 
+use Database\Factories\CompanyFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-#[Fillable([
-    'insurance_id',
-    'name',
-    'email',
-    'siret',
-    'rm_number',
-    'vat_number',
-    'logo_path',
-    'address',
-    'complementary_address',
-    'postal_code',
-    'city',
-    'phone',
-])]
+#[Fillable(['insurance_id','name','email','siret','rm_number','vat_number','logo_path','address','complementary_address','postal_code','city','phone'])]
 class Company extends Model
 {
+    use HasFactory;
+    
     public function insurance(): BelongsTo
     {
         return $this->belongsTo(Insurance::class);

@@ -38,6 +38,11 @@ return new class extends Migration
                 ->constrained()
                 ->restrictOnDelete();
 
+            $table->foreignId('payment_method_id')
+                ->nullable()
+                ->constrained()
+                ->restrictOnDelete();
+
             $table->string('reference');
 
             $table->decimal('total_ht', 10, 2)->default(0);
@@ -48,7 +53,6 @@ return new class extends Migration
             $table->date('due_at')->nullable();
             $table->date('paid_at')->nullable();
 
-            $table->string('payment_method')->nullable();
             $table->string('payment_reference')->nullable();
 
             $table->text('notes')->nullable();

@@ -28,7 +28,7 @@ return new class extends Migration
 
             $table->integer('position')->default(0);
 
-            $table->string('warranty')->nullable();
+            $table->integer('warranty')->nullable();
 
             $table->decimal('supplies', 10, 2)->default(0);
             $table->decimal('labor', 10, 2)->default(0);

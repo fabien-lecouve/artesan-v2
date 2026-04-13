@@ -37,4 +37,12 @@ class Supply extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    /**
+     * Get the unit that owns the supply.
+     */
+    public function unit(): BelongsTo
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }
