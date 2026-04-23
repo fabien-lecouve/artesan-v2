@@ -1,0 +1,9 @@
+@use '../abstracts/variables' as *;
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+h1 {
+    color: $primary-dark;
+}

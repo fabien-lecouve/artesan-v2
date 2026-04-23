@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as *;
+
+.btn {
+    background-color: $primary;
+    color: $white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+    border: none;
+}
+
+.btn:hover {
+    background-color: $primary-dark;
+    cursor: pointer;
+}

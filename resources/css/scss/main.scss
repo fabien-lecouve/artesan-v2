@@ -1,17 +1,18 @@
 @use 'abstracts/variables';
-@use 'abstracts/mixins';
+// @use 'abstracts/mixins';
 
 
 @use 'base/normalize';
 @use 'base/typography';
-@use 'base/colors';
 
 
-@use 'layout/body';
-@use 'layout/index';
-@use 'layout/project';
-@use 'layout/knowledge';
+@use 'layout/layout-app';
+@use 'layout/main-app';
+@use 'layout/sidebar';
 
 
-@use 'components/buttons';
+@use 'components/button';
+@use 'components/filter';
+@use 'components/form';
 @use 'components/link';
+@use 'components/table';

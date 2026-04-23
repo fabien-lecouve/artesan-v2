@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as *;
+
+.layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+
+    &__sidebar {
+        background: $primary;
+    }
+    
+    &__main {
+        background: $light;
+    }
+}

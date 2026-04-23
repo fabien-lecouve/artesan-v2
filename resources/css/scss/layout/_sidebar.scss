@@ -1,0 +1,30 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    
+    &__brand {
+        text-align: center;
+        margin-bottom: 64px;
+    }
+    
+    &__logo {
+        width: 80%;
+    }
+    
+    &__nav {
+        padding-left: 48px;
+    }
+    
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__bottom {
+        text-align: center;
+    }
+}
+

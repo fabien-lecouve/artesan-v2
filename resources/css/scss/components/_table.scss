@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as *;
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: $white;
+    border-radius: 6px;
+    overflow: hidden;
+    
+    &__cell {
+        padding: 12px;
+        border-bottom: 1px solid $light-200;
+        text-align: center;
+    }
+    
+    &__row:hover {
+        background: $light-100;
+    }
+}

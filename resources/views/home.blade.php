@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.guest>
     <x-slot:title>
         Welcome
     </x-slot:title>
@@ -14,4 +14,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-layouts.guest>

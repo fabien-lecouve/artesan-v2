@@ -1,0 +1,48 @@
+@use '../abstracts/variables' as *;
+
+.form {
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    &__label {
+        margin-left: 8px;
+    }
+    
+    &__input {
+        padding: 8px 12px;
+        border: 1px solid $light-200;
+        border-radius: 6px;
+        background: $white;
+        transition: border 0.15s ease, box-shadow 0.15s ease;
+    }
+    
+    &__input:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 2px rgba($primary, 0.15);
+        outline: none;
+    }
+    
+    &__row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 16px;
+    }
+    
+    &__actions {
+        text-align: right;
+    }
+    
+    &__error {
+        margin-left: 8px;
+        color: $accent;
+    }
+}
+

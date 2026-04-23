@@ -1,5 +1,16 @@
+@use '../abstracts/variables' as *;
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: $dark;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
 }
