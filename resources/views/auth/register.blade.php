@@ -3,116 +3,116 @@
         S'inscrire
     </x-slot:title>
 
-    <div class="hero min-h-[calc(100vh-16rem)]">
-        <div class="hero-content flex-col">
-            <div class="card w-96 bg-base-100">
-                <div class="card-body">
-                    <h1 class="text-3xl font-bold text-center mb-6">Créer un compte</h1>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <h1>Créer un compte</h1>
 
                     <form method="POST" action="/register">
                         @csrf
 
                         <!-- Company -->
-                        <label class="floating-label mb-6">
+                        <label>
                             <input type="text"
                                    name="name"
                                    placeholder="Coca Cola"
                                    value="{{ old('name') }}"
-                                   class="input input-bordered @error('name') input-error @enderror"
+                                  
                                    required>
                             <span>Nom de la société</span>
                         </label>
                         @error('name')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div>
+                                <span>{{ $message }}</span>
                             </div>
                         @enderror
 
                         <!-- Firstname -->
-                        <label class="floating-label mb-6">
+                        <label>
                             <input type="text"
                                    name="firstname"
                                    placeholder="John"
                                    value="{{ old('firstname') }}"
-                                   class="input input-bordered @error('firstname') input-error @enderror"
+                                  
                                    required>
                             <span>Prénom</span>
                         </label>
                         @error('firstname')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div>
+                                <span>{{ $message }}</span>
                             </div>
                         @enderror
 
                         <!-- Lastname -->
-                        <label class="floating-label mb-6">
+                        <label>
                             <input type="text"
                                    name="lastname"
                                    placeholder="Doe"
                                    value="{{ old('lastname') }}"
-                                   class="input input-bordered @error('lastname') input-error @enderror"
+                                  
                                    required>
                             <span>Nom</span>
                         </label>
                         @error('lastname')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div>
+                                <span>{{ $message }}</span>
                             </div>
                         @enderror
 
                         <!-- Email -->
-                        <label class="floating-label mb-6">
+                        <label>
                             <input type="email"
                                    name="email"
                                    placeholder="[mail@example.com](<mailto:mail@example.com>)"
                                    value="{{ old('email') }}"
-                                   class="input input-bordered @error('email') input-error @enderror"
+                                  
                                    required>
                             <span>Email</span>
                         </label>
                         @error('email')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div>
+                                <span>{{ $message }}</span>
                             </div>
                         @enderror
 
                         <!-- Password -->
-                        <label class="floating-label mb-6">
+                        <label>
                             <input type="password"
                                    name="password"
                                    placeholder="••••••••"
-                                   class="input input-bordered @error('password') input-error @enderror"
+                                  
                                    required>
                             <span>Mot de passe</span>
                         </label>
                         @error('password')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            <div>
+                                <span>{{ $message }}</span>
                             </div>
                         @enderror
 
                         <!-- Password Confirmation -->
-                        <label class="floating-label mb-6">
+                        <label>
                             <input type="password"
                                    name="password_confirmation"
                                    placeholder="••••••••"
-                                   class="input input-bordered"
+                                  
                                    required>
                             <span>Confirmer le mot de passe</span>
                         </label>
 
                         <!-- Submit Button -->
-                        <div class="form-control mt-8">
-                            <button type="submit" class="btn btn-primary btn-sm w-full">
+                        <div>
+                            <button type="submit">
                                 S'inscrire
                             </button>
                         </div>
                     </form>
 
-                    <div class="divider">OU</div>
-                    <p class="text-center text-sm">
+                    <div>OU</div>
+                    <p>
                         Vous avez déjà un compte ?
-                        <a href="/login" class="link link-primary">Connectez-vous</a>
+                        <a href="/login">Connectez-vous</a>
                     </p>
                 </div>
             </div>
