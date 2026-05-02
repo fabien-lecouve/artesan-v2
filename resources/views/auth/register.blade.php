@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.guest>
     <x-slot:title>
         S'inscrire
     </x-slot:title>
@@ -118,4 +118,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-layouts.guest>

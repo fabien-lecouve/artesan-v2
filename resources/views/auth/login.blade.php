@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.guest>
     <x-slot:title>
         Se connecter
     </x-slot:title>
@@ -71,4 +71,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+</x-layouts.guest>
