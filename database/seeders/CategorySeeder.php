@@ -16,19 +16,19 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'code' => 'prise_de_courant',
-                'name' => 'prise de courant'
+                'label' => 'prise de courant'
             ],
             [
                 'code' => 'circuit_eclairage',
-                'name' => 'circuit éclairage'
+                'label' => 'circuit éclairage'
             ],
             [
                 'code' => 'prise_de_communication',
-                'name' => 'prise de communication'
+                'label' => 'prise de communication'
             ],
             [
                 'code' => 'tableau_electrique',
-                'name' => 'tableau électrique'
+                'label' => 'tableau électrique'
             ]
         ];
         DB::table('categories')->insert($categories);
