@@ -6,14 +6,21 @@
     background: $white;
     border-radius: 6px;
     overflow: hidden;
-    
+
     &__cell {
         padding: 12px;
         border-bottom: 1px solid $light-200;
         text-align: center;
     }
-    
-    &__row:hover {
-        background: $light-100;
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        & i {
+            color: $accent;
+            background-color: none;
+        }
     }
 }

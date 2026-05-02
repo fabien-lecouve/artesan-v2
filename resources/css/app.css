@@ -9,6 +9,15 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  background: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 li {
   list-style: none;
 }
@@ -83,7 +92,6 @@ h1 {
 
 .btn:hover {
   background-color: #1F4F86;
-  cursor: pointer;
 }
 
 .filters {
@@ -171,6 +179,31 @@ h1 {
   cursor: pointer;
 }
 
+.modal {
+  text-align: center;
+  border: none;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal__buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.modal::backdrop {
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.15);
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -183,8 +216,14 @@ h1 {
   border-bottom: 1px solid #E2E8F0;
   text-align: center;
 }
-.table__row:hover {
-  background: #F1F5F9;
+.table__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.table__actions i {
+  color: #F28C28;
+  background-color: none;
 }
 
 /*# sourceMappingURL=app.css.map */

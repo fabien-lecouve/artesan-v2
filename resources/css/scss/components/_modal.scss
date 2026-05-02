@@ -1,0 +1,27 @@
+.modal {
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    max-width: 400px;
+    width: 90%;
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__buttons {
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+}
+
+.modal::backdrop {
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.15);
+}
