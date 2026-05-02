@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['company_id', 'estimate_room_id', 'supply_id', 'quantity', 'position', 'label', 'unit_cost', 'unit_price', 'labor_cost', 'labor_price', 'vat_rate_id', 'description_override'])]
 class EstimateLine extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     
     /**
      * Get the attributes that should be cast.

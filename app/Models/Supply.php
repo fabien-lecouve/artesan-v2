@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['category_id','company_id','name','unit_cost','description_singular','description_plural'])]
 class Supply extends Model
 {
+    use SoftDeletes;
+    
     /**
      * Get the attributes that should be cast.
      *

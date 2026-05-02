@@ -30,6 +30,8 @@ return new class extends Migration
 
             $table->string('phone')->nullable();
 
+            $table->softDeletes();
+
             $table->timestamps();
 
             $table->unique(['company_id', 'email']);

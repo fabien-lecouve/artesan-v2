@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['insurance_id','name','email','siret','rm_number','vat_number','logo_path','address','complementary_address','postal_code','city','phone'])]
 class Company extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     
     public function insurance(): BelongsTo
     {

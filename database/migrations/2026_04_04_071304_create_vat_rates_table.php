@@ -19,6 +19,8 @@ return new class extends Migration
 
             $table->decimal('rate', 5, 2);
 
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

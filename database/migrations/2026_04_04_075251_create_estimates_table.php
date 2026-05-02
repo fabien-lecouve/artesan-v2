@@ -36,6 +36,8 @@ return new class extends Migration
             $table->decimal('total_vat', 10, 2)->default(0);
             $table->decimal('total_ttc', 10, 2)->default(0);
 
+            $table->softDeletes();
+
             $table->timestamps();
 
             $table->unique(['company_id', 'reference']);

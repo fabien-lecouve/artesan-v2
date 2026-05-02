@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('is_admin')->default(false);
 
             $table->rememberToken();
+
+            $table->softDeletes();
+            
             $table->timestamps();
 
             $table->unique(['company_id', 'email']);

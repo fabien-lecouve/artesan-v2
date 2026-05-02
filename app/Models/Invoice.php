@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['company_id','customer_id','project_id','estimate_id','invoice_status_id','invoice_type_id','reference','total_ht','total_vat','total_ttc','issued_at','due_at','paid_at','payment_method','payment_reference','notes'])]
 class Invoice extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     
     /**
      * Get the attributes that should be cast.

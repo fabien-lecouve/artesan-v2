@@ -35,6 +35,8 @@ return new class extends Migration
             $table->string('description_singular')->nullable();
             $table->string('description_plural')->nullable();
 
+            $table->softDeletes();
+
             $table->timestamps();
 
             $table->index('company_id');

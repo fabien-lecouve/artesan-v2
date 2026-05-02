@@ -31,6 +31,8 @@ return new class extends Migration
             $table->decimal('labor_cost', 10, 2)->nullable();
             $table->decimal('labor_price', 10, 2)->nullable();
 
+            $table->softDeletes();
+
             $table->timestamps();
 
             $table->unique(['supply_id', 'project_type_id']);

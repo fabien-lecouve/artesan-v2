@@ -28,6 +28,8 @@ return new class extends Migration
 
             $table->string('complementary_label')->nullable();
 
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

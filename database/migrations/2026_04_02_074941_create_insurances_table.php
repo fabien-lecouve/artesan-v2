@@ -16,8 +16,10 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('address')->nullable();
-            $table->string('postal_code', 10)->nullable();
+            $table->string('postal_code', 5)->nullable();
             $table->string('city')->nullable();
+
+            $table->softDeletes();
 
             $table->timestamps();
         });

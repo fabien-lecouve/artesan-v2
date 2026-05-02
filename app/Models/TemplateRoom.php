@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['company_id', 'template_id', 'room_id', 'position', 'complementary_label'])]
 class TemplateRoom extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     public function company(): BelongsTo
     {

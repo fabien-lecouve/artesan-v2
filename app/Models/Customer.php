@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['company_id','email','firstname','lastname','address','complementary_address','postal_code','city','phone'])]
 class Customer extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     
     public function company(): BelongsTo
     {

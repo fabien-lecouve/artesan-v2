@@ -43,6 +43,8 @@ return new class extends Migration
 
             $table->text('description_override')->nullable();
 
+            $table->softDeletes();
+
             $table->timestamps();
 
             $table->index('estimate_room_id');

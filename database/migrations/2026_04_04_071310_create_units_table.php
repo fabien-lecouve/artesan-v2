@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
+
             $table->string('code')->unique();
             $table->string('label');
+
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable(['supply_id','project_type_id','vat_rate_id','unit_price','labor_cost','labor_price'])]
 class PriceRule extends Model
 {
+    use SoftDeletes;
+    
     /**
      * Get the attributes that should be cast.
      *
