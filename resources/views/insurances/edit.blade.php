@@ -1,77 +1,62 @@
 <x-layouts.app>
     <x-slot:title>
-        Modifier une assurance
+        Modifier assurance {{ $insurance->name }}
     </x-slot:title>
 
-    <header>
-        <h1>Créer une assurance</h1>
+    <header class="main__header header">
+        <h1 class="header__title">Modifier assurance {{ $insurance->name }}</h1>
+        <a href="{{ route('insurances.index') }}" class="link btn">
+            <i class="link__icon fa-solid fa-arrow-left"></i>
+            <span class="link__text">Retour aux assurances</span>
+        </a>
     </header>
 
+    <div class="main__content">
+        <form class="form" method="POST" action="{{ route('insurances.update', ['insurance' => $insurance]) }}">
+            @csrf
+            @method('PUT')
 
-    <form method="POST" action="{{ route('insurances.update', ['insurance' => $insurance]) }}">
-        @csrf
-        @method('PUT')
+            <div class="form__group">
+                <label class="form__label" for="name">Nom</label>
+                <input class="form__input" id="name" type="text" name="name" value="{{ old('name', $insurance->name) }}" />
+                @error('name')
+                    <div class="form__error">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div>
-            <label for="name">Nom</label>
-            <input
-                id="name"
-                type="text"
-                name="name"
-                value="{{ old('name') }}"
-               
-            />
-            @error('name')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="form__group">
+                <label class="form__label" for="address">Adresse</label>
+                <input class="form__input" id="address" type="text" name="address" value="{{ old('address', $insurance->address) }}" />
+                @error('address')
+                    <div class="form__error">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div>
-            <label for="address">Adresse</label>
-            <input
-                id="address"
-                type="text"
-                name="address"
-                value="{{ old('address') }}"
-               
-            />
-            @error('address')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="form__row">
+                <div class="form__group">
+                    <label class="form__label" for="postal_code">Code postal</label>
+                    <input class="form__input" id="postal_code" type="text" name="postal_code"
+                        value="{{ old('postal_code', $insurance->postal_code) }}" />
+                    @error('postal_code')
+                        <div class="form__error">{{ $message }}</div>
+                    @enderror
+                </div>
 
-        <div>
-            <label for="postal_code">Code postal</label>
-            <input
-                id="postal_code"
-                type="text"
-                name="postal_code"
-                value="{{ old('postal_code') }}"
-               
-            />
-            @error('postal_code')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
+                <div class="form__group">
+                    <label class="form__label" for="city">Ville</label>
+                    <input class="form__input" id="city" type="text" name="city" value="{{ old('city', $insurance->city) }}" />
+                    @error('city')
+                        <div class="form__error">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
 
-        <div>
-            <label for="city">Ville</label>
-            <input
-                id="city"
-                type="text"
-                name="city"
-                value="{{ old('city') }}"
-               
-            />
-            @error('city')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-    
-        <div>
-            <button type="submit">
-                Valider
-            </button>
-        </div>
-    </form>
+            <div class="form__actions">
+                <button type="submit" class="btn">
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+
 </x-layouts.app>

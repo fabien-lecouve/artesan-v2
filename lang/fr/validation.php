@@ -15,10 +15,10 @@ return [
     'array'                  => 'Le champ :attribute doit être un tableau.',
     'ascii'                  => 'Le champ :attribute ne doit contenir que des caractères alphanumériques et des symboles codés sur un octet.',
     'attributes' => [
-        'name' => 'nom',
         'address' => 'adresse',
-        'postal_code' => 'code postal',
-        'city' => 'ville'
+        'city' => 'ville',
+        'name' => 'nom',
+        'postal_code' => 'code postal'
     ],
     'before'                 => 'Le champ :attribute doit être une date antérieure au :date.',
     'before_or_equal'        => 'Le champ :attribute doit être une date antérieure ou égale au :date.',

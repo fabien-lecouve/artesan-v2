@@ -12,13 +12,13 @@
     </header>
 
     <div class="main__content">
-        <form method="POST" action="{{ route('insurances.store') }}" class="form">
+        <form class="form" method="POST" action="{{ route('insurances.store') }}">
             @csrf
 
             <div class="form__group">
-                <label for="name" class="form__label">Nom</label>
+                <label class="form__label" for="name">Nom</label>
 
-                <input id="name" type="text" name="name" value="{{ old('name') }}" class="form__input">
+                <input class="form__input" id="name" type="text" name="name" value="{{ old('name') }}">
 
                 @error('name')
                     <div class="form__error">{{ $message }}</div>
@@ -26,9 +26,9 @@
             </div>
 
             <div class="form__group">
-                <label for="address" class="form__label">Adresse</label>
+                <label class="form__label" for="address">Adresse</label>
 
-                <input id="address" type="text" name="address" value="{{ old('address') }}" class="form__input">
+                <input class="form__input" id="address" type="text" name="address" value="{{ old('address') }}">
 
                 @error('address')
                     <div class="form__error">{{ $message }}</div>
@@ -38,10 +38,10 @@
             <div class="form__row">
 
                 <div class="form__group">
-                    <label for="postal_code" class="form__label">Code postal</label>
+                    <label class="form__label" for="postal_code">Code postal</label>
 
-                    <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code') }}"
-                        class="form__input">
+                    <input class="form__input" id="postal_code" type="text" name="postal_code"
+                        value="{{ old('postal_code') }}">
 
                     @error('postal_code')
                         <div class="form__error">{{ $message }}</div>
@@ -49,9 +49,9 @@
                 </div>
 
                 <div class="form__group">
-                    <label for="city" class="form__label">Ville</label>
+                    <label class="form__label" for="city">Ville</label>
 
-                    <input id="city" type="text" name="city" value="{{ old('city') }}" class="form__input">
+                    <input class="form__input" id="city" type="text" name="city" value="{{ old('city') }}">
 
                     @error('city')
                         <div class="form__error">{{ $message }}</div>
@@ -61,8 +61,8 @@
             </div>
 
             <div class="form__actions">
-                <button type="submit" class="btn">
-                    Valider
+                <button class="btn" type="submit">
+                    Créer
                 </button>
             </div>
 

@@ -19,6 +19,7 @@
                     <th class="table__cell">Adresse</th>
                     <th class="table__cell">Code postal</th>
                     <th class="table__cell">Ville</th>
+                    <th class="table__cell"></th>
                 </tr>
             </thead>
 
@@ -32,8 +33,14 @@
                         <td class="table__cell">{{ $insurance->city ?? '-' }}</td>
 
                         <td class="table__cell table__actions">
-                            <a href="{{ route('insurances.show', $insurance) }}"><i class="fa-solid fa-eye"></i></a>
                             <a href="{{ route('insurances.edit', $insurance) }}"><i class="fa-solid fa-pen"></i></a>
+                            <form method="POST" action="{{ route('insurances.destroy', $insurance) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" onclick="openModal(this.form)">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -41,5 +48,26 @@
             </tbody>
         </table>
     </div>
+
+    <dialog class="modal" id="confirmDelete">
+        <p>Supprimer cette assurance ?</p>
+        <div class="modal__buttons">
+            <button class="btn" id="cancel">Annuler</button>
+            <button class="btn" id="confirm">Supprimer</button>
+        </div>
+    </dialog>
+
+    @push('scripts')
+        <script>
+            function openModal(form) {
+                const dialog = document.getElementById('confirmDelete');
+
+                dialog.showModal();
+
+                dialog.querySelector('#confirm').onclick = () => form.submit();
+                dialog.querySelector('#cancel').onclick = () => dialog.close();
+            }
+        </script>
+    @endpush
 
 </x-layouts.app>
