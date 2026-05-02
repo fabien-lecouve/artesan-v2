@@ -15,15 +15,19 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
+                'code' => 'prise_de_courant',
                 'name' => 'prise de courant'
             ],
             [
+                'code' => 'circuit_eclairage',
                 'name' => 'circuit éclairage'
             ],
             [
+                'code' => 'prise_de_communication',
                 'name' => 'prise de communication'
             ],
             [
+                'code' => 'tableau_electrique',
                 'name' => 'tableau électrique'
             ]
         ];
