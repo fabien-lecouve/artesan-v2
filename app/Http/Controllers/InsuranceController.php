@@ -33,7 +33,6 @@ class InsuranceController extends Controller
     public function store(StoreInsuranceRequest $request)
     {
         $validated = $request->validated();
-
         $insurance = Insurance::create($validated);
 
         return redirect()->route('insurances.index')->with('success', 'Assurance ' . $insurance->name . ' a été créée');
@@ -55,7 +54,6 @@ class InsuranceController extends Controller
     public function update(UpdateInsuranceRequest $request, Insurance $insurance)
     {
         $validated = $request->validated();
-
         $insurance->update($validated);
 
         return redirect()->route('insurances.index')->with('success', 'Assurance ' . $insurance->name . ' a été modifiée');
@@ -68,7 +66,6 @@ class InsuranceController extends Controller
     public function destroy(Insurance $insurance)
     {
         $name = $insurance->name;
-
         $insurance->delete();
 
         return redirect()->route('insurances.index')->with('success', "Assurance $name supprimée");
