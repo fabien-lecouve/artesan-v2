@@ -160,11 +160,17 @@ h1 {
   gap: 16px;
 }
 .form__actions {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .form__error {
   margin-left: 8px;
   color: #F28C28;
+}
+.form .required_field {
+  color: #F28C28;
+  padding: 4px;
 }
 
 .link {

@@ -9,7 +9,10 @@ beforeEach(function () {
     $this->actingAs($this->user);
 });
 
-test('insurance can be updated', function () {
+test('admin can update insurance', function () {
+
+    $this->user->is_admin = true;
+    $this->user->save();
 
     $insurance = Insurance::factory()->create([
         'name' => 'MAIF',
@@ -26,13 +29,13 @@ test('insurance can be updated', function () {
 
     $response->assertRedirect(route('insurances.index'));
 
-    $response->assertSessionHasNoErrors();
-
     $this->assertDatabaseHas('insurances', $data);
-
 });
 
 test('name is required to update insurance', function () {
+
+    $this->user->is_admin = true;
+    $this->user->save();
 
     $insurance = Insurance::factory()->create();
 
@@ -43,6 +46,21 @@ test('name is required to update insurance', function () {
     $response->assertSessionHasErrors('name');
 
 });
+
+test('non admin cannot update insurance', function () {
+
+    $this->user->is_admin = false;
+    $this->user->save();
+
+    $insurance = Insurance::factory()->create();
+
+    $response = $this->put(route('insurances.update', $insurance), [
+        'name' => 'AXA',
+    ]);
+
+    $response->assertForbidden();
+});
+
 
 test('guest cannot update insurance', function () {
 

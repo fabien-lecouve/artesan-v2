@@ -16,7 +16,7 @@
             @csrf
 
             <div class="form__group">
-                <label class="form__label" for="name">Nom</label>
+                <label class="form__label" for="name">Nom<span class="required_field">*</span></label>
 
                 <input class="form__input" id="name" type="text" name="name" value="{{ old('name') }}">
 
@@ -61,6 +61,10 @@
             </div>
 
             <div class="form__actions">
+                <div>
+                    <span class="required_field">*</span>
+                    <small>champs requis</small>
+                </div>
                 <button class="btn" type="submit">
                     Créer
                 </button>

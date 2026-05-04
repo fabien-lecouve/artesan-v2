@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Insurance;
 use App\Http\Requests\StoreInsuranceRequest;
 use App\Http\Requests\UpdateInsuranceRequest;
+use Illuminate\Routing\Attributes\Controllers\Authorize;
 
 class InsuranceController extends Controller
 {
@@ -41,6 +42,7 @@ class InsuranceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    #[Authorize('update', 'insurance')]
     public function edit(Insurance $insurance)
     {
         return view('insurances.edit', ['insurance' => $insurance]);
@@ -49,6 +51,7 @@ class InsuranceController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    #[Authorize('update', 'insurance')]
     public function update(UpdateInsuranceRequest $request, Insurance $insurance)
     {
         $validated = $request->validated();
@@ -61,6 +64,7 @@ class InsuranceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    #[Authorize('delete', 'insurance')]
     public function destroy(Insurance $insurance)
     {
         $name = $insurance->name;

@@ -19,7 +19,9 @@
                     <th class="table__cell">Adresse</th>
                     <th class="table__cell">Code postal</th>
                     <th class="table__cell">Ville</th>
-                    <th class="table__cell"></th>
+                    @can('viewAny', App\Models\Insurance::class)
+                        <th class="table__cell"></th>
+                    @endcan
                 </tr>
             </thead>
 
@@ -31,17 +33,25 @@
                         <td class="table__cell">{{ $insurance->address ?? '-' }}</td>
                         <td class="table__cell">{{ $insurance->postal_code ?? '-' }}</td>
                         <td class="table__cell">{{ $insurance->city ?? '-' }}</td>
+                        @canany(['update', 'delete'], $insurance)
+                            <td class="table__cell table__actions">
+                                @can('update', $insurance)
+                                    <a href="{{ route('insurances.edit', $insurance) }}">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                @endcan
 
-                        <td class="table__cell table__actions">
-                            <a href="{{ route('insurances.edit', $insurance) }}"><i class="fa-solid fa-pen"></i></a>
-                            <form method="POST" action="{{ route('insurances.destroy', $insurance) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="openModal(this.form)">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </form>
-                        </td>
+                                @can('delete', $insurance)
+                                    <form method="POST" action="{{ route('insurances.destroy', $insurance) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="openModal(this.form)">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                @endcan
+                            </td>
+                        @endcanany
                     </tr>
                 @endforeach
 

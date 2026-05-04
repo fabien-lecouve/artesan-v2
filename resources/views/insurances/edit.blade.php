@@ -17,7 +17,7 @@
             @method('PUT')
 
             <div class="form__group">
-                <label class="form__label" for="name">Nom</label>
+                <label class="form__label" for="name">Nom<span class="required_field">*</span></label>
                 <input class="form__input" id="name" type="text" name="name" value="{{ old('name', $insurance->name) }}" />
                 @error('name')
                     <div class="form__error">{{ $message }}</div>
@@ -52,6 +52,7 @@
             </div>
 
             <div class="form__actions">
+                <p><span class="required_field">*</span>champs requis</p>
                 <button type="submit" class="btn">
                     Enregistrer
                 </button>

@@ -9,7 +9,10 @@ beforeEach(function () {
     $this->actingAs($this->user);
 });
 
-test('insurance can be soft deleted', function () {
+test('admin can soft delete insurance', function () {
+
+    $this->user->is_admin = true;
+    $this->user->save();
 
     $insurance = Insurance::factory()->create();
 
@@ -18,6 +21,19 @@ test('insurance can be soft deleted', function () {
     $response->assertRedirect(route('insurances.index'));
 
     $this->assertSoftDeleted($insurance);
+
+});
+
+test('non admin cannot delete insurance', function () {
+
+    $this->user->is_admin = false;
+    $this->user->save();
+
+    $insurance = Insurance::factory()->create();
+
+    $response = $this->delete(route('insurances.destroy', $insurance));
+
+    $response->assertForbidden();
 
 });
 
