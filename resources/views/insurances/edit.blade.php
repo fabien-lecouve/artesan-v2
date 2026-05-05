@@ -52,7 +52,10 @@
             </div>
 
             <div class="form__actions">
-                <p><span class="required_field">*</span>champs requis</p>
+                <div>
+                    <span class="required_field">*</span>
+                    <small>champs requis</small>
+                </div>
                 <button type="submit" class="btn">
                     Enregistrer
                 </button>

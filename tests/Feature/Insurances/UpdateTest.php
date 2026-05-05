@@ -32,21 +32,6 @@ test('admin can update insurance', function () {
     $this->assertDatabaseHas('insurances', $data);
 });
 
-test('name is required to update insurance', function () {
-
-    $this->user->is_admin = true;
-    $this->user->save();
-
-    $insurance = Insurance::factory()->create();
-
-    $response = $this->put(route('insurances.update', $insurance), [
-        'name' => '',
-    ]);
-
-    $response->assertSessionHasErrors('name');
-
-});
-
 test('non admin cannot update insurance', function () {
 
     $this->user->is_admin = false;
@@ -61,6 +46,20 @@ test('non admin cannot update insurance', function () {
     $response->assertForbidden();
 });
 
+test('fields are required to update insurance', function () {
+
+    $this->user->is_admin = true;
+    $this->user->save();
+
+    $insurance = Insurance::factory()->create();
+
+    $response = $this->put(route('insurances.update', $insurance), [
+        'name' => '',
+    ]);
+
+    $response->assertSessionHasErrors('name');
+
+});
 
 test('guest cannot update insurance', function () {
 

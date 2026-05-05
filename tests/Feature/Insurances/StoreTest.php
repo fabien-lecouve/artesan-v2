@@ -27,7 +27,7 @@ test('insurance can be stored', function () {
 
 });
 
-test('name is required', function () {
+test('fields are required', function () {
 
     $response = $this->post(route('insurances.store'), [
         'name' => '',

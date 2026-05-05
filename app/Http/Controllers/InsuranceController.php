@@ -35,7 +35,7 @@ class InsuranceController extends Controller
         $validated = $request->validated();
         $insurance = Insurance::create($validated);
 
-        return redirect()->route('insurances.index')->with('success', 'Assurance ' . $insurance->name . ' a été créée');
+        return redirect()->route('insurances.index')->with('success', "Assurance $insurance->name créée");
     }
 
     /**
@@ -56,7 +56,7 @@ class InsuranceController extends Controller
         $validated = $request->validated();
         $insurance->update($validated);
 
-        return redirect()->route('insurances.index')->with('success', 'Assurance ' . $insurance->name . ' a été modifiée');
+        return redirect()->route('insurances.index')->with('success', "Assurance $insurance->name modifiée");
     }
 
     /**

@@ -17,6 +17,7 @@ return [
     'attributes' => [
         'address' => 'adresse',
         'city' => 'ville',
+        'label' => 'libellé',
         'name' => 'nom',
         'postal_code' => 'code postal'
     ],
