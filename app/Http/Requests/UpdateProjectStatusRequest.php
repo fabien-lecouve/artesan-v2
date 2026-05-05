@@ -23,7 +23,7 @@ class UpdateProjectStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|max:255|unique:certificates,code',
+            'code' => 'required|string|max:255|unique:projectStatuses,code',
             'label' => 'required|string|max:255'
         ];
     }
