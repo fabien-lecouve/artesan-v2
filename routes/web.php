@@ -8,6 +8,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\ProjectStatusController;
 use App\Http\Controllers\ProjectTypeController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -42,5 +43,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('projectStatuses', ProjectStatusController::class);
     Route::resource('projectTypes', ProjectTypeController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('units', UnitController::class);
 
 });
