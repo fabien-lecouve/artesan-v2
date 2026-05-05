@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\ProjectStatusController;
@@ -40,5 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('certificates', CertificateController::class)->middleware(['auth', 'can:viewAny,App\Models\Certificate']);
     Route::resource('projectStatuses', ProjectStatusController::class);
     Route::resource('projectTypes', ProjectTypeController::class);
+    Route::resource('categories', CategoryController::class);
 
 });
