@@ -8,6 +8,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\EstimateStatusController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\InvoiceStatusController;
+use App\Http\Controllers\InvoiceTypeController;
 use App\Http\Controllers\ProjectStatusController;
 use App\Http\Controllers\ProjectTypeController;
 use App\Http\Controllers\UnitController;
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('estimate-statuses', EstimateStatusController::class);
     Route::resource('insurances', InsuranceController::class);
     Route::resource('invoice-statuses', InvoiceStatusController::class);
+    Route::resource('invoice-types', InvoiceTypeController::class);
     Route::resource('project-statuses', ProjectStatusController::class);
     Route::resource('project-types', ProjectTypeController::class);
     Route::resource('units', UnitController::class);
