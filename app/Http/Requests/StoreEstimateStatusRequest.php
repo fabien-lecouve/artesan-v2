@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateInsuranceRequest extends FormRequest
+class StoreEstimateStatusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,8 @@ class UpdateInsuranceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'address' => ['nullable', 'string', 'max:255'],
-            'postal_code' => ['nullable', 'digits:5'],
-            'city' => ['nullable', 'string', 'max:255'],
+            'code' => ['required', 'string', 'max:255', 'unique:estimate_statuses,code'],
+            'label' => ['required', 'string', 'max:255'],
         ];
     }
 }

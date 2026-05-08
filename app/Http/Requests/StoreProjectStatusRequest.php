@@ -23,8 +23,8 @@ class StoreProjectStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|max:255|unique:projectStatuses,code',
-            'label' => 'required|string|max:255'
+            'code' => ['required', 'string', 'max:255', 'unique:project_statuses,code'],
+            'label' => ['required', 'string', 'max:255'],
         ];
     }
 }

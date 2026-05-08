@@ -23,8 +23,8 @@ class UpdateUnitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|max:255|unique:units,code',
-            'label' => 'required|string|max:255'
+            'code' => ['required', 'string', 'max:255', 'unique:units,code'],
+            'label' => ['required', 'string', 'max:255'],
         ];
     }
 }

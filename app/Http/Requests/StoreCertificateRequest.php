@@ -23,9 +23,9 @@ class StoreCertificateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|max:255|unique:certificates,code',
-            'label' => 'required|string|max:255',
-            'logo_path' => 'nullable|string|max:255',
+            'code' => ['required', 'string', 'max:255', 'unique:certificates,code'],
+            'label' => ['required', 'string', 'max:255'],
+            'logo_path' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\EstimateStatusController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\ProjectStatusController;
 use App\Http\Controllers\ProjectTypeController;
@@ -38,11 +39,12 @@ Route::post('/logout', Logout::class)
 
 Route::middleware('auth')->group(function () {
 
-    Route::resource('insurances', InsuranceController::class);
+    Route::resource('categories', CategoryController::class);
     Route::resource('certificates', CertificateController::class)->middleware(['auth', 'can:viewAny,App\Models\Certificate']);
+    Route::resource('estimateStatuses', EstimateStatusController::class);
+    Route::resource('insurances', InsuranceController::class);
     Route::resource('projectStatuses', ProjectStatusController::class);
     Route::resource('projectTypes', ProjectTypeController::class);
-    Route::resource('categories', CategoryController::class);
     Route::resource('units', UnitController::class);
-
+     
 });

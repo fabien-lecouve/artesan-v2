@@ -23,8 +23,8 @@ class StoreProjectTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|max:255|unique:projectTypes,code',
-            'label' => 'required|string|max:255'
+            'code' => ['required', 'string', 'max:255', 'unique:project_types,code'],
+            'label' => ['required', 'string', 'max:255'],
         ];
     }
 }
