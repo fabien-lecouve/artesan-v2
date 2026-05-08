@@ -15,7 +15,7 @@ class EstimateStatusController extends Controller
     {
         $estimateStatuses = EstimateStatus::all();
 
-        return view('estimateStatuses.index', ['estimateStatuses' => $estimateStatuses]);
+        return view('estimate_statuses.index', ['estimateStatuses' => $estimateStatuses]);
     }
 
     /**
@@ -23,7 +23,7 @@ class EstimateStatusController extends Controller
      */
     public function create()
     {
-        return view('estimateStatuses.create');
+        return view('estimate_statuses.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class EstimateStatusController extends Controller
         $validated = $request->validated();
         $estimateStatus = EstimateStatus::create($validated);
 
-        return redirect()->route('estimateStatuses.index')->with('success', "Statut du devis $estimateStatus->label créé");
+        return redirect()->route('estimate-statuses.index')->with('success', "Statut du devis $estimateStatus->label créé");
     }
 
     /**
@@ -50,7 +50,7 @@ class EstimateStatusController extends Controller
      */
     public function edit(EstimateStatus $estimateStatus)
     {
-        return view('estimateStatuses.edit', ['estimateStatus' => $estimateStatus]);
+        return view('estimate_statuses.edit', ['estimateStatus' => $estimateStatus]);
     }
 
     /**
@@ -61,7 +61,7 @@ class EstimateStatusController extends Controller
         $validated = $request->validated();
         $estimateStatus->update($validated);
 
-        return redirect()->route('estimateStatuses.index')->with('success', "Statut du devis $estimateStatus->label modifié");
+        return redirect()->route('estimate-statuses.index')->with('success', "Statut du devis $estimateStatus->label modifié");
     }
 
     /**
@@ -72,6 +72,6 @@ class EstimateStatusController extends Controller
         $label = $estimateStatus->label;
         $estimateStatus->delete();
 
-        return redirect()->route('estimateStatuses.index')->with('success', "Statut du devis $label supprimé");
+        return redirect()->route('estimate-statuses.index')->with('success', "Statut du devis $label supprimé");
     }
 }

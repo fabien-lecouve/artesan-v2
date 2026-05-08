@@ -15,7 +15,7 @@ class ProjectTypeController extends Controller
     {
         $projectTypes = ProjectType::all();
 
-        return view('projectTypes.index', ['projectTypes' => $projectTypes]);
+        return view('project_types.index', ['projectTypes' => $projectTypes]);
     }
 
     /**
@@ -23,7 +23,7 @@ class ProjectTypeController extends Controller
      */
     public function create()
     {
-        return view('projectTypes.create');
+        return view('project_types.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class ProjectTypeController extends Controller
         $validated = $request->validated();
         $projectType = ProjectType::create($validated);
 
-        return redirect()->route('projectTypes.index')->with('success', "Type de projet $projectType->label créé");
+        return redirect()->route('project-types.index')->with('success', "Type de projet $projectType->label créé");
     }
 
     /**
@@ -50,7 +50,7 @@ class ProjectTypeController extends Controller
      */
     public function edit(ProjectType $projectType)
     {
-        return view('projectTypes.edit', ['projectType' => $projectType]);
+        return view('project_types.edit', ['projectType' => $projectType]);
     }
 
     /**
@@ -61,7 +61,7 @@ class ProjectTypeController extends Controller
         $validated = $request->validated();
         $projectType->update($validated);
 
-        return redirect()->route('projectTypes.index')->with('success', "Type de projet $projectType->label modifié");
+        return redirect()->route('project-types.index')->with('success', "Type de projet $projectType->label modifié");
     }
 
     /**
@@ -72,6 +72,6 @@ class ProjectTypeController extends Controller
         $label = $projectType->label;
         $projectType->delete();
 
-        return redirect()->route('projectTypes.index')->with('success', "Type de projet $label supprimé");
+        return redirect()->route('project-types.index')->with('success', "Type de projet $label supprimé");
     }
 }

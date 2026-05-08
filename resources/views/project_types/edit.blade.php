@@ -1,25 +1,25 @@
 <x-layouts.app>
     <x-slot:title>
-        Modifier un statut du devis
+        Modifier un type de projet
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Modifier un statut du devis</h1>
-        <a href="{{ route('estimateStatuses.index') }}" class="link btn">
+        <h1 class="header__title">Modifier un type de projet</h1>
+        <a href="{{ route('project-types.index') }}" class="link btn">
             <i class="link__icon fa-solid fa-arrow-left"></i>
-            <span class="link__text">Retour aux statuts du devis</span>
+            <span class="link__text">Retour aux types de projet</span>
         </a>
     </header>
 
     <div class="main__content">
-        <form class="form" method="POST" action="{{ route('estimateStatuses.update', ['estimateStatus => $estimateStatus']) }}" enctype="multipart/form-data">
+        <form class="form" method="POST" action="{{ route('project-types.update', ['projectType => $projectType']) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="form__group">
                 <label class="form__label" for="code">Code<span class="required_field">*</span></label>
 
-                <input class="form__input" id="code" type="text" name="code" value="{{ old('code', $estimateStatus->code) }}">
+                <input class="form__input" id="code" type="text" name="code" value="{{ old('code', $projectType->code) }}">
 
                 @error('code')
                     <div class="form__error">{{ $message }}</div>
@@ -29,7 +29,7 @@
             <div class="form__group">
                 <label class="form__label" for="label">Libellé<span class="required_field">*</span></label>
 
-                <input class="form__input" id="label" type="text" name="label" value="{{ old('label', $estimateStatus->label) }}">
+                <input class="form__input" id="label" type="text" name="label" value="{{ old('label', $projectType->label) }}">
 
                 @error('label')
                     <div class="form__error">{{ $message }}</div>

@@ -42,11 +42,11 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('categories', CategoryController::class);
     Route::resource('certificates', CertificateController::class)->middleware(['auth', 'can:viewAny,App\Models\Certificate']);
-    Route::resource('estimateStatuses', EstimateStatusController::class);
+    Route::resource('estimate-statuses', EstimateStatusController::class);
     Route::resource('insurances', InsuranceController::class);
     Route::resource('invoice-statuses', InvoiceStatusController::class);
-    Route::resource('projectStatuses', ProjectStatusController::class);
-    Route::resource('projectTypes', ProjectTypeController::class);
+    Route::resource('project-statuses', ProjectStatusController::class);
+    Route::resource('project-types', ProjectTypeController::class);
     Route::resource('units', UnitController::class);
      
 });

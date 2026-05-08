@@ -1,13 +1,13 @@
 <x-layouts.app>
     <x-slot:title>
-        Statuts du devis
+        Types de projet
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Statuts du devis</h1>
-        <a href="{{ route('estimateStatuses.create') }}" class="link btn">
+        <h1 class="header__title">Types de projet</h1>
+        <a href="{{ route('project-types.create') }}" class="link btn">
             <i class="link__icon fa-solid fa-plus"></i>
-            <span class="link__text">Créer un statut du devis</span>
+            <span class="link__text">Créer un type de projet</span>
         </a>
     </header>
 
@@ -23,22 +23,22 @@
 
             <tbody class="table__body">
 
-                @foreach ($estimateStatuses as $estimateStatus)
+                @foreach ($projectTypes as $projectType)
                     <tr class="table__row">
-                        <td class="table__cell">{{ $estimateStatus->code }}</td>
-                        <td class="table__cell">{{ $estimateStatus->label }}</td>
+                        <td class="table__cell">{{ $projectType->code }}</td>
+                        <td class="table__cell">{{ $projectType->label }}</td>
                         <td class="table__cell table__actions">
-                            <a href="{{ route('estimateStatuses.show', $estimateStatus) }}">
+                            <a href="{{ route('project-types.show', $projectType) }}">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                        @can('update', $estimateStatus)
-                            <a href="{{ route('estimateStatuses.edit', $estimateStatus) }}">
+                        @can('update', $projectType)
+                            <a href="{{ route('project-types.edit', $projectType) }}">
                                 <i class="fa-solid fa-pen"></i>
                             </a>
                         @endcan
 
-                        @can('delete', $estimateStatus)
-                            <form method="POST" action="{{ route('estimateStatuses.destroy', $estimateStatus) }}">
+                        @can('delete', $projectType)
+                            <form method="POST" action="{{ route('project-types.destroy', $projectType) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" onclick="openModal(this.form)">
@@ -55,7 +55,7 @@
     </div>
 
     <dialog class="modal" id="confirmDelete">
-        <p>Supprimer ce statut du devis ?</p>
+        <p>Supprimer ce type de projet ?</p>
         <div class="modal__buttons">
             <button class="btn" id="cancel">Annuler</button>
             <button class="btn" id="confirm">Supprimer</button>

@@ -15,7 +15,7 @@ class ProjectStatusController extends Controller
     {
         $projectStatuses = ProjectStatus::all();
 
-        return view('projectStatuses.index', ['projectStatuses' => $projectStatuses]);
+        return view('project_statuses.index', ['projectStatuses' => $projectStatuses]);
     }
 
     /**
@@ -23,7 +23,7 @@ class ProjectStatusController extends Controller
      */
     public function create()
     {
-        return view('projectStatuses.create');
+        return view('project_statuses.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class ProjectStatusController extends Controller
         $validated = $request->validated();
         $projectStatus = ProjectStatus::create($validated);
 
-        return redirect()->route('projectStatuses.index')->with('success', "Statut du projet $projectStatus->label créé");
+        return redirect()->route('project-statuses.index')->with('success', "Statut du projet $projectStatus->label créé");
     }
 
     /**
@@ -50,7 +50,7 @@ class ProjectStatusController extends Controller
      */
     public function edit(ProjectStatus $projectStatus)
     {
-        return view('projectStatuses.edit', ['projectStatus' => $projectStatus]);
+        return view('project_statuses.edit', ['projectStatus' => $projectStatus]);
     }
 
     /**
@@ -61,7 +61,7 @@ class ProjectStatusController extends Controller
         $validated = $request->validated();
         $projectStatus->update($validated);
 
-        return redirect()->route('projectStatuses.index')->with('success', "Statut du projet $projectStatus->label modifié");
+        return redirect()->route('project-statuses.index')->with('success', "Statut du projet $projectStatus->label modifié");
     }
 
     /**
@@ -72,6 +72,6 @@ class ProjectStatusController extends Controller
         $label = $projectStatus->label;
         $projectStatus->delete();
 
-        return redirect()->route('projectStatuses.index')->with('success', "Statut du projet $label supprimé");
+        return redirect()->route('project-statuses.index')->with('success', "Statut du projet $label supprimé");
     }
 }

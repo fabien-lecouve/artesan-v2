@@ -1,18 +1,18 @@
 <x-layouts.app>
     <x-slot:title>
-        Créer un statut du projet
+        Créer un statut du devis
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Créer un statut du projet</h1>
-        <a href="{{ route('projectStatuses.index') }}" class="link btn">
+        <h1 class="header__title">Créer un statut du devis</h1>
+        <a href="{{ route('estimate-statuses.index') }}" class="link btn">
             <i class="link__icon fa-solid fa-arrow-left"></i>
-            <span class="link__text">Retour aux statuts du projet</span>
+            <span class="link__text">Retour aux statuts du devis</span>
         </a>
     </header>
 
     <div class="main__content">
-        <form class="form" method="POST" action="{{ route('projectStatuses.store') }}" enctype="multipart/form-data">
+        <form class="form" method="POST" action="{{ route('estimate-statuses.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="form__group">
