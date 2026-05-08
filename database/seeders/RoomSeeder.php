@@ -15,7 +15,7 @@ class RoomSeeder extends Seeder
     {
         $rooms = [
             [
-                'code' => 'chambre',
+                'code' => 'bedroom',
                 'label' => 'chambre'                
             ],
             [

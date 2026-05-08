@@ -34,7 +34,7 @@ class CategoryController extends Controller
         $validated = $request->validated();
         $category = Category::create($validated);
 
-        return redirect()->route('categories.index')->with('success', "Categorie $category->label créée");
+        return redirect()->route('categories.index')->with('success', "Catégorie $category->label créée");
     }
 
     /**
@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $validated = $request->validated();
         $category->update($validated);
 
-        return redirect()->route('categories.index')->with('success', "Categorie $category->label modifiée");
+        return redirect()->route('categories.index')->with('success', "Catégorie $category->label modifiée");
     }
 
     /**
@@ -72,6 +72,6 @@ class CategoryController extends Controller
         $label = $category->label;
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', "Categorie $label supprimée");
+        return redirect()->route('categories.index')->with('success', "Catégorie $label supprimée");
     }
 }

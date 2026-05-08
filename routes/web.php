@@ -11,6 +11,7 @@ use App\Http\Controllers\InvoiceStatusController;
 use App\Http\Controllers\InvoiceTypeController;
 use App\Http\Controllers\ProjectStatusController;
 use App\Http\Controllers\ProjectTypeController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('invoice-types', InvoiceTypeController::class);
     Route::resource('project-statuses', ProjectStatusController::class);
     Route::resource('project-types', ProjectTypeController::class);
+    Route::resource('rooms', RoomController::class);
     Route::resource('units', UnitController::class);
      
 });
