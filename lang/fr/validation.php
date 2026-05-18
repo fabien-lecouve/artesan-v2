@@ -19,7 +19,8 @@ return [
         'city' => 'ville',
         'label' => 'libellé',
         'name' => 'nom',
-        'postal_code' => 'code postal'
+        'postal_code' => 'code postal',
+        'rate' => 'taux'
     ],
     'before'                 => 'Le champ :attribute doit être une date antérieure au :date.',
     'before_or_equal'        => 'Le champ :attribute doit être une date antérieure ou égale au :date.',

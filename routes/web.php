@@ -14,6 +14,7 @@ use App\Http\Controllers\ProjectStatusController;
 use App\Http\Controllers\ProjectTypeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\VatRateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -53,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('project-statuses', ProjectStatusController::class);
     Route::resource('project-types', ProjectTypeController::class);
     Route::resource('rooms', RoomController::class);
+    Route::resource('vat-rates', VatRateController::class);
     Route::resource('units', UnitController::class);
      
 });
