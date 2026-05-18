@@ -1,49 +1,24 @@
 <x-layouts.app>
     <x-slot:title>
-        Créer un statut du projet
+        Créer un statut de projet
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Créer un statut du projet</h1>
-        <a href="{{ route('project-statuses.index') }}" class="link btn">
-            <i class="link__icon fa-solid fa-arrow-left"></i>
-            <span class="link__text">Retour aux statuts du projet</span>
-        </a>
+        <h1 class="header__title">Créer un statut de projet</h1>
+        <x-buttons.link type="back" :href="route('project-statuses.index')">
+            Retour aux statuts de projet
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
         <form class="form" method="POST" action="{{ route('project-statuses.store') }}" enctype="multipart/form-data">
             @csrf
 
-            <div class="form__group">
-                <label class="form__label" for="code">Code<span class="required_field">*</span></label>
+            <x-forms.input name="code" label="Code" required />
 
-                <input class="form__input" id="code" type="text" name="code" value="{{ old('code') }}">
+            <x-forms.input name="label" label="Libellé" required />
 
-                @error('code')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form__group">
-                <label class="form__label" for="label">Libellé<span class="required_field">*</span></label>
-
-                <input class="form__input" id="label" type="text" name="label" value="{{ old('label') }}">
-
-                @error('label')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form__actions">
-                <div>
-                    <span class="required_field">*</span>
-                    <small>champs requis</small>
-                </div>
-                <button class="btn" type="submit">
-                    Créer
-                </button>
-            </div>
+            <x-forms.submit label="Créer" />
 
         </form>
     </div>

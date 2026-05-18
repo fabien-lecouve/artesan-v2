@@ -5,10 +5,9 @@
 
     <header class="main__header header">
         <h1 class="header__title">Modifier un statut du devis</h1>
-        <a href="{{ route('estimate-statuses.index') }}" class="link btn">
-            <i class="link__icon fa-solid fa-arrow-left"></i>
-            <span class="link__text">Retour aux statuts du devis</span>
-        </a>
+        <x-buttons.link type="back" :href="route('estimate-statuses.index')">
+            Retour aux statuts de devis
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
@@ -16,35 +15,11 @@
             @csrf
             @method('PUT')
 
-            <div class="form__group">
-                <label class="form__label" for="code">Code<span class="required_field">*</span></label>
+            <x-forms.input name="code" label="Code" :value="$estimateStatus->code" required />
 
-                <input class="form__input" id="code" type="text" name="code" value="{{ old('code', $estimateStatus->code) }}">
+            <x-forms.input name="label" label="Libellé" :value="$estimateStatus->label" required />
 
-                @error('code')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form__group">
-                <label class="form__label" for="label">Libellé<span class="required_field">*</span></label>
-
-                <input class="form__input" id="label" type="text" name="label" value="{{ old('label', $estimateStatus->label) }}">
-
-                @error('label')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form__actions">
-                <div>
-                    <span class="required_field">*</span>
-                    <small>champs requis</small>
-                </div>
-                <button class="btn" type="submit">
-                    Enregistrer
-                </button>
-            </div>
+            <x-forms.submit label="Enregistrer" />
 
         </form>
     </div>

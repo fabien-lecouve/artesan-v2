@@ -5,56 +5,33 @@
 
     <header class="main__header header">
         <h1 class="header__title">Modifier un certificat</h1>
-        <a href="{{ route('certificates.index') }}" class="link btn">
-            <i class="link__icon fa-solid fa-arrow-left"></i>
-            <span class="link__text">Retour aux certificats</span>
-        </a>
+        <x-buttons.link type="back" :href="route('certificates.index')">
+            Retour aux certificats
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
-        <form class="form" method="POST" action="{{ route('certificates.update', ['certificate => $certificate']) }}" enctype="multipart/form-data">
+        <form class="form" method="POST" action="{{ route('certificates.update', ['certificate => $certificate']) }}"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
-            <div class="form__group">
-                <label class="form__label" for="code">Code<span class="required_field">*</span></label>
+            <x-forms.input name="code" label="Code" :value="$certificate->code" required />
 
-                <input class="form__input" id="code" type="text" name="code" value="{{ old('code', $certificate->code) }}">
-
-                @error('code')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form__group">
-                <label class="form__label" for="label">Libellé<span class="required_field">*</span></label>
-
-                <input class="form__input" id="label" type="text" name="label" value="{{ old('label', $certificate->label) }}">
-
-                @error('label')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
+            <x-forms.input name="label" label="Libellé" :value="$certificate->label" required />
 
             <div class="form__group">
                 <label class="form__label" for="logo_path">Logo</label>
 
-                <input class="form__input" id="logo_path" type="file" name="logo_path" value="{{ old('logo_path', $certificate->logo_path) }}">
+                <input class="form__input" id="logo_path" type="file" name="logo_path"
+                    value="{{ old('logo_path', $certificate->logo_path) }}">
 
                 @error('logo_path')
                     <div class="form__error">{{ $message }}</div>
                 @enderror
             </div>
 
-            <div class="form__actions">
-                <div>
-                    <span class="required_field">*</span>
-                    <small>champs requis</small>
-                </div>
-                <button class="btn" type="submit">
-                    Enregistrer
-                </button>
-            </div>
+            <x-forms.submit label="Enregistrer" />
 
         </form>
     </div>

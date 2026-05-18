@@ -1,14 +1,13 @@
 <x-layouts.app>
     <x-slot:title>
-        Méthodes de paiement
+        Méthode de paiement
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Méthodes de paiement</h1>
-        <a href="{{ route('payment-methods.create') }}" class="link btn">
-            <i class="link__icon fa-solid fa-plus"></i>
-            <span class="link__text">Créer une méthode de paiement</span>
-        </a>
+        <h1 class="header__title">Méthode de paiement</h1>
+        <x-buttons.link type="add" :href="route('payment-methods.create')">
+            Créer une méthode de paiement
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
@@ -31,21 +30,16 @@
                             <a href="{{ route('payment-methods.show', $paymentMethod) }}">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                        @can('update', $paymentMethod)
                             <a href="{{ route('payment-methods.edit', $paymentMethod) }}">
                                 <i class="fa-solid fa-pen"></i>
                             </a>
-                        @endcan
-
-                        @can('delete', $paymentMethod)
                             <form method="POST" action="{{ route('payment-methods.destroy', $paymentMethod) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="openModal(this.form)">
+                                <button type="button" onclick="openModal('confirmDelete', () => this.form.submit())">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </form>
-                        @endcan
                         </td>
                     </tr>
                 @endforeach
@@ -54,25 +48,6 @@
         </table>
     </div>
 
-    <dialog class="modal" id="confirmDelete">
-        <p>Supprimer cette méthode de paiement ?</p>
-        <div class="modal__buttons">
-            <button class="btn" id="cancel">Annuler</button>
-            <button class="btn" id="confirm">Supprimer</button>
-        </div>
-    </dialog>
-
-    @push('scripts')
-        <script>
-            function openModal(form) {
-                const dialog = document.getElementById('confirmDelete');
-
-                dialog.showModal();
-
-                dialog.querySelector('#confirm').onclick = () => form.submit();
-                dialog.querySelector('#cancel').onclick = () => dialog.close();
-            }
-        </script>
-    @endpush
+    <x-modals.confirm id="confirmDelete" title="Supprimer cette méthode de paiement ?" />
 
 </x-layouts.app>

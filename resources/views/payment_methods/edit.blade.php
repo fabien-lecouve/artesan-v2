@@ -5,46 +5,22 @@
 
     <header class="main__header header">
         <h1 class="header__title">Modifier une méthode de paiement</h1>
-        <a href="{{ route('payment-methods.index') }}" class="link btn">
-            <i class="link__icon fa-solid fa-arrow-left"></i>
-            <span class="link__text">Retour aux méthodes de paiement</span>
-        </a>
+        <x-buttons.link type="back" :href="route('payment-methods.index')">
+            Retour aux méthodes de paiement
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
-        <form class="form" method="POST" action="{{ route('payment-methods.update', ['paymentMethod => $paymentMethod']) }}" enctype="multipart/form-data">
+        <form class="form" method="POST" action="{{ route('payment-methods.update', ['paymentMethod => $paymentMethod']) }}"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
-            <div class="form__group">
-                <label class="form__label" for="code">Code<span class="required_field">*</span></label>
+            <x-forms.input name="code" label="Code" :value="$paymentMethod->code" required />
 
-                <input class="form__input" id="code" type="text" name="code" value="{{ old('code', $paymentMethod->code) }}">
+            <x-forms.input name="label" label="Libellé" :value="$paymentMethod->label" required />
 
-                @error('code')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form__group">
-                <label class="form__label" for="label">Libellé<span class="required_field">*</span></label>
-
-                <input class="form__input" id="label" type="text" name="label" value="{{ old('label', $paymentMethod->label) }}">
-
-                @error('label')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form__actions">
-                <div>
-                    <span class="required_field">*</span>
-                    <small>champs requis</small>
-                </div>
-                <button class="btn" type="submit">
-                    Enregistrer
-                </button>
-            </div>
+            <x-forms.submit label="Enregistrer" />
 
         </form>
     </div>

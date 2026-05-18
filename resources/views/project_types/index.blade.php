@@ -5,10 +5,9 @@
 
     <header class="main__header header">
         <h1 class="header__title">Types de projet</h1>
-        <a href="{{ route('project-types.create') }}" class="link btn">
-            <i class="link__icon fa-solid fa-plus"></i>
-            <span class="link__text">Créer un type de projet</span>
-        </a>
+        <x-buttons.link type="add" :href="route('project-types.create')">
+            Créer un type de projet
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
@@ -31,21 +30,21 @@
                             <a href="{{ route('project-types.show', $projectType) }}">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                        @can('update', $projectType)
-                            <a href="{{ route('project-types.edit', $projectType) }}">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
-                        @endcan
+                            @can('update', $projectType)
+                                <a href="{{ route('project-types.edit', $projectType) }}">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            @endcan
 
-                        @can('delete', $projectType)
-                            <form method="POST" action="{{ route('project-types.destroy', $projectType) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="openModal(this.form)">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </form>
-                        @endcan
+                            @can('delete', $projectType)
+                                <form method="POST" action="{{ route('project-types.destroy', $projectType) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" onclick="openModal('confirmDelete', () => this.form.submit())">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
@@ -54,25 +53,6 @@
         </table>
     </div>
 
-    <dialog class="modal" id="confirmDelete">
-        <p>Supprimer ce type de projet ?</p>
-        <div class="modal__buttons">
-            <button class="btn" id="cancel">Annuler</button>
-            <button class="btn" id="confirm">Supprimer</button>
-        </div>
-    </dialog>
-
-    @push('scripts')
-        <script>
-            function openModal(form) {
-                const dialog = document.getElementById('confirmDelete');
-
-                dialog.showModal();
-
-                dialog.querySelector('#confirm').onclick = () => form.submit();
-                dialog.querySelector('#cancel').onclick = () => dialog.close();
-            }
-        </script>
-    @endpush
+    <x-modals.confirm id="confirmDelete" title="Supprimer ce type de projet ?" />
 
 </x-layouts.app>

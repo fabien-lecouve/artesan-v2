@@ -5,10 +5,9 @@
 
     <header class="main__header header">
         <h1 class="header__title">Modifier assurance {{ $insurance->name }}</h1>
-        <a href="{{ route('insurances.index') }}" class="link btn">
-            <i class="link__icon fa-solid fa-arrow-left"></i>
-            <span class="link__text">Retour aux assurances</span>
-        </a>
+        <x-buttons.link type="back" :href="route('insurances.index')">
+            Retour aux assurances
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
@@ -16,50 +15,19 @@
             @csrf
             @method('PUT')
 
-            <div class="form__group">
-                <label class="form__label" for="name">Nom<span class="required_field">*</span></label>
-                <input class="form__input" id="name" type="text" name="name" value="{{ old('name', $insurance->name) }}" />
-                @error('name')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
+            <x-forms.input name="name" label="Nom" :value="$insurance->name" required />
 
-            <div class="form__group">
-                <label class="form__label" for="address">Adresse</label>
-                <input class="form__input" id="address" type="text" name="address" value="{{ old('address', $insurance->address) }}" />
-                @error('address')
-                    <div class="form__error">{{ $message }}</div>
-                @enderror
-            </div>
+            <x-forms.input name="address" label="Adresse" :value="$insurance->address" />
 
             <div class="form__row">
-                <div class="form__group">
-                    <label class="form__label" for="postal_code">Code postal</label>
-                    <input class="form__input" id="postal_code" type="text" name="postal_code"
-                        value="{{ old('postal_code', $insurance->postal_code) }}" />
-                    @error('postal_code')
-                        <div class="form__error">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form__group">
-                    <label class="form__label" for="city">Ville</label>
-                    <input class="form__input" id="city" type="text" name="city" value="{{ old('city', $insurance->city) }}" />
-                    @error('city')
-                        <div class="form__error">{{ $message }}</div>
-                    @enderror
-                </div>
+                
+                <x-forms.input name="postal_code" label="Code postal" :value="$insurance->postal_code" />
+                
+                <x-forms.input name="city" label="Ville" :value="$insurance->city" />
+                
             </div>
 
-            <div class="form__actions">
-                <div>
-                    <span class="required_field">*</span>
-                    <small>champs requis</small>
-                </div>
-                <button type="submit" class="btn">
-                    Enregistrer
-                </button>
-            </div>
+            <x-forms.submit label="Enregistrer" />
         </form>
     </div>
 

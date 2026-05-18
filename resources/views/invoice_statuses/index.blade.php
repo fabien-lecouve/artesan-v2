@@ -1,14 +1,13 @@
 <x-layouts.app>
     <x-slot:title>
-        Statuts du devis
+        Statuts de facture
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Statuts du devis</h1>
-        <a href="{{ route('estimate-statuses.create') }}" class="link btn">
-            <i class="link__icon fa-solid fa-plus"></i>
-            <span class="link__text">Créer un statut du devis</span>
-        </a>
+        <h1 class="header__title">Statuts de facture</h1>
+        <x-buttons.link type="add" :href="route('invoice-statuses.create')">
+            Créer un statut de facture
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
@@ -23,29 +22,29 @@
 
             <tbody class="table__body">
 
-                @foreach ($estimateStatuses as $estimateStatus)
+                @foreach ($invoiceStatuses as $invoiceStatus)
                     <tr class="table__row">
-                        <td class="table__cell">{{ $estimateStatus->code }}</td>
-                        <td class="table__cell">{{ $estimateStatus->label }}</td>
+                        <td class="table__cell">{{ $invoiceStatus->code }}</td>
+                        <td class="table__cell">{{ $invoiceStatus->label }}</td>
                         <td class="table__cell table__actions">
-                            <a href="{{ route('estimate-statuses.show', $estimateStatus) }}">
+                            <a href="{{ route('invoice-statuses.show', $invoiceStatus) }}">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                        @can('update', $estimateStatus)
-                            <a href="{{ route('estimate-statuses.edit', $estimateStatus) }}">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
-                        @endcan
+                            @can('update', $invoiceStatus)
+                                <a href="{{ route('invoice-statuses.edit', $invoiceStatus) }}">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            @endcan
 
-                        @can('delete', $estimateStatus)
-                            <form method="POST" action="{{ route('estimate-statuses.destroy', $estimateStatus) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="openModal(this.form)">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </form>
-                        @endcan
+                            @can('delete', $invoiceStatus)
+                                <form method="POST" action="{{ route('invoice-statuses.destroy', $invoiceStatus) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" onclick="openModal('confirmDelete', () => this.form.submit())">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
@@ -54,25 +53,6 @@
         </table>
     </div>
 
-    <dialog class="modal" id="confirmDelete">
-        <p>Supprimer ce statut du devis ?</p>
-        <div class="modal__buttons">
-            <button class="btn" id="cancel">Annuler</button>
-            <button class="btn" id="confirm">Supprimer</button>
-        </div>
-    </dialog>
-
-    @push('scripts')
-        <script>
-            function openModal(form) {
-                const dialog = document.getElementById('confirmDelete');
-
-                dialog.showModal();
-
-                dialog.querySelector('#confirm').onclick = () => form.submit();
-                dialog.querySelector('#cancel').onclick = () => dialog.close();
-            }
-        </script>
-    @endpush
+    <x-modals.confirm id="confirmDelete" title="Supprimer ce statut de facture ?" />
 
 </x-layouts.app>

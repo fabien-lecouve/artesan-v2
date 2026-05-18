@@ -1,14 +1,13 @@
 <x-layouts.app>
     <x-slot:title>
-        Statuts du devis
+        Statuts de devis
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Statuts du devis</h1>
-        <a href="{{ route('estimate-statuses.create') }}" class="link btn">
-            <i class="link__icon fa-solid fa-plus"></i>
-            <span class="link__text">Créer un statut du devis</span>
-        </a>
+        <h1 class="header__title">Statuts de devis</h1>
+        <x-buttons.link type="add" :href="route('estimate-statuses.create')">
+            Créer un statut de devis
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
@@ -41,7 +40,7 @@
                             <form method="POST" action="{{ route('estimate-statuses.destroy', $estimateStatus) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="openModal(this.form)">
+                               <button type="button" onclick="openModal('confirmDelete', () => this.form.submit())">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </form>
@@ -54,25 +53,6 @@
         </table>
     </div>
 
-    <dialog class="modal" id="confirmDelete">
-        <p>Supprimer ce statut du devis ?</p>
-        <div class="modal__buttons">
-            <button class="btn" id="cancel">Annuler</button>
-            <button class="btn" id="confirm">Supprimer</button>
-        </div>
-    </dialog>
-
-    @push('scripts')
-        <script>
-            function openModal(form) {
-                const dialog = document.getElementById('confirmDelete');
-
-                dialog.showModal();
-
-                dialog.querySelector('#confirm').onclick = () => form.submit();
-                dialog.querySelector('#cancel').onclick = () => dialog.close();
-            }
-        </script>
-    @endpush
+    <x-modals.confirm id="confirmDelete" title="Supprimer ce statut de devis ?" />
 
 </x-layouts.app>

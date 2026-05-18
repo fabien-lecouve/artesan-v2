@@ -1,14 +1,13 @@
 <x-layouts.app>
     <x-slot:title>
-        Statuts du projet
+        Statuts de projet
     </x-slot:title>
 
     <header class="main__header header">
-        <h1 class="header__title">Statuts du projet</h1>
-        <a href="{{ route('project-statuses.create') }}" class="link btn">
-            <i class="link__icon fa-solid fa-plus"></i>
-            <span class="link__text">Créer un statut du projet</span>
-        </a>
+        <h1 class="header__title">Statuts de projet</h1>
+        <x-buttons.link type="add" :href="route('project-statuses.create')">
+            Créer un statut de projet
+        </x-buttons.link>
     </header>
 
     <div class="main__content">
@@ -31,21 +30,21 @@
                             <a href="{{ route('project-statuses.show', $projectStatus) }}">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                        @can('update', $projectStatus)
-                            <a href="{{ route('project-statuses.edit', $projectStatus) }}">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
-                        @endcan
+                            @can('update', $projectStatus)
+                                <a href="{{ route('project-statuses.edit', $projectStatus) }}">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            @endcan
 
-                        @can('delete', $projectStatus)
-                            <form method="POST" action="{{ route('project-statuses.destroy', $projectStatus) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="openModal(this.form)">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </form>
-                        @endcan
+                            @can('delete', $projectStatus)
+                                <form method="POST" action="{{ route('project-statuses.destroy', $projectStatus) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" onclick="openModal('confirmDelete', () => this.form.submit())">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
@@ -54,25 +53,6 @@
         </table>
     </div>
 
-    <dialog class="modal" id="confirmDelete">
-        <p>Supprimer ce statut du projet ?</p>
-        <div class="modal__buttons">
-            <button class="btn" id="cancel">Annuler</button>
-            <button class="btn" id="confirm">Supprimer</button>
-        </div>
-    </dialog>
-
-    @push('scripts')
-        <script>
-            function openModal(form) {
-                const dialog = document.getElementById('confirmDelete');
-
-                dialog.showModal();
-
-                dialog.querySelector('#confirm').onclick = () => form.submit();
-                dialog.querySelector('#cancel').onclick = () => dialog.close();
-            }
-        </script>
-    @endpush
+    <x-modals.confirm id="confirmDelete" title="Supprimer ce statut de projet ?" />
 
 </x-layouts.app>
